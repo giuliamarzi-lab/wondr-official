@@ -1,0 +1,236 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/* ── AvertaStd font faces — unico font del sito ── */
+@font-face {
+  font-family: 'AvertaStd';
+  src: url('/manus-storage/AvertaStd-Light_74cb8620.ttf') format('truetype');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'AvertaStd';
+  src: url('/manus-storage/AvertaStd-Regular_fd7aa551.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'AvertaStd';
+  src: url('/manus-storage/AvertaStd-Bold_6fefc9ad.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'AvertaStd';
+  src: url('/manus-storage/AvertaStd-Bold_6fefc9ad.ttf') format('truetype');
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  /* Wondr brand — esatti dal sito Lovable */
+  --color-ink: var(--ink);
+  --color-magenta: var(--magenta);
+  /* Fonts */
+  --font-sans: 'AvertaStd', system-ui, sans-serif;
+  --font-display: 'AvertaStd', system-ui, sans-serif;
+  --font-body: 'AvertaStd', system-ui, sans-serif;
+}
+
+:root {
+  /* Radius esatto dal sito Lovable: .875rem */
+  --radius: 0.875rem;
+
+  /* ── Wondr brand colors — estratti dal computed style del sito Lovable ── */
+  /* --ink: #12172a → blu notte scuro */
+  --ink: oklch(0.185 0.045 264);
+  /* --magenta: lab(52.386% 81.4953 -15.9638) → magenta vivace */
+  --magenta: #ec009b;
+
+  /* ── Shadcn/Tailwind tokens — estratti dal sito Lovable ── */
+  /* --background: lab(98.252% -.0618994 -.756907) → quasi bianco */
+  --background: oklch(0.984 0.001 286);
+  /* --foreground: lab(16.4343% -.207871 -3.73001) → quasi nero */
+  --foreground: oklch(0.235 0.004 286);
+  /* --card: lab(100% 0 0) → bianco puro */
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.235 0.004 286);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.235 0.004 286);
+  /* --primary = --magenta */
+  --primary: #ec009b;
+  --primary-foreground: oklch(1 0 0);
+  /* --secondary: lab(95.3398% -.150025 -1.88942) → grigio chiarissimo */
+  --secondary: oklch(0.96 0.002 286);
+  --secondary-foreground: oklch(0.235 0.004 286);
+  /* --muted: lab(94.1798% -.149935 -1.88937) */
+  --muted: oklch(0.948 0.002 286);
+  --muted-foreground: oklch(0.56 0.008 286);
+  /* --accent */
+  --accent: oklch(0.956 0.005 358);
+  --accent-foreground: oklch(0.235 0.004 286);
+  --destructive: oklch(0.577 0.245 27.325);
+  --destructive-foreground: oklch(1 0 0);
+  /* --border: lab(90.6998% -.149697 -1.88923) */
+  --border: oklch(0.916 0.002 286);
+  --input: oklch(0.916 0.002 286);
+  --ring: #ec009b;
+  --chart-1: #ec009b;
+  --chart-2: oklch(0.7 0.2 358);
+  --chart-3: oklch(0.8 0.12 358);
+  --chart-4: oklch(0.88 0.07 358);
+  --chart-5: oklch(0.94 0.03 358);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+    box-sizing: border-box;
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    background-color: var(--background);
+    color: var(--foreground);
+    font-family: 'AvertaStd', system-ui, sans-serif;
+    font-weight: 400;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'AvertaStd', system-ui, sans-serif;
+    font-weight: 700;
+  }
+  button:not(:disabled),
+  [role="button"]:not([aria-disabled="true"]),
+  [type="button"]:not(:disabled),
+  [type="submit"]:not(:disabled),
+  a[href],
+  select:not(:disabled) {
+    cursor: pointer;
+  }
+}
+
+@layer utilities {
+  /* Wondr brand color utilities */
+  .bg-ink { background-color: var(--ink); }
+  .text-ink { color: var(--ink); }
+  .border-ink { border-color: var(--ink); }
+  .bg-magenta { background-color: var(--magenta); }
+  .text-magenta { color: var(--magenta); }
+  .border-magenta { border-color: var(--magenta); }
+  .bg-magenta\/10 { background-color: color-mix(in srgb, #ec009b 10%, transparent); }
+  .bg-magenta\/20 { background-color: color-mix(in srgb, #ec009b 20%, transparent); }
+  .border-magenta\/30 { border-color: color-mix(in srgb, #ec009b 30%, transparent); }
+  .ring-magenta { --tw-ring-color: var(--magenta); }
+
+  /* Glass effect — usato nel bottone "Inizia gratis" della navbar */
+  .glass {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+  .glass:hover {
+    background: rgba(255, 255, 255, 0.18);
+  }
+
+  /* Shadow variants */
+  .shadow-elevated {
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.12), 0 4px 16px rgba(0, 0, 0, 0.08);
+  }
+  .shadow-magenta {
+    box-shadow: 0 4px 20px color-mix(in srgb, #ec009b 35%, transparent);
+  }
+  .hover\:shadow-elevated:hover {
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.12), 0 4px 16px rgba(0, 0, 0, 0.08);
+  }
+}
+
+@layer components {
+  .container {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  .flex {
+    min-height: 0;
+    min-width: 0;
+  }
+  @media (min-width: 640px) {
+    .container { padding-left: 1.5rem; padding-right: 1.5rem; }
+  }
+  @media (min-width: 1024px) {
+    .container { padding-left: 2rem; padding-right: 2rem; max-width: 1280px; }
+  }
+
+  /* ── Dot pattern per l'hero — stile tavoletta grafica ── */
+  .dot-pattern {
+    background-image:
+      radial-gradient(circle, rgba(236,0,155,0.55) 1.5px, transparent 1.5px),
+      radial-gradient(circle, rgba(236,0,155,0.15) 3px, transparent 3px);
+    background-size: 24px 24px, 96px 96px;
+    background-position: 0 0, 12px 12px;
+  }
+
+  /* ── Scroll reveal animation ── */
+  .reveal {
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity 0.6s cubic-bezier(0.23, 1, 0.32, 1), transform 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+  }
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ── Result card hover ── */
+  .result-card {
+    border: 1.5px solid var(--border);
+    background: var(--card);
+    border-radius: 1rem;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+  }
+  .result-card:hover {
+    border-color: var(--magenta);
+    box-shadow: 0 8px 32px color-mix(in srgb, #ec009b 12%, transparent);
+    transform: translateY(-2px);
+  }
+}
